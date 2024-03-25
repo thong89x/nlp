@@ -1,3 +1,4 @@
+# sentiment analysis and named entity recognition
 import spacy
 
 # Load English tokenizer, tagger, parser, and NER
@@ -15,9 +16,7 @@ def process_message(message):
     
     # Extract title, description, and time from the analyzed message
     for ent in doc.ents:
-        print(doc)
-        print(doc.ents)
-        print(ent.label_)
+        print(ent.text, ent.start_char, ent.end_char, ent.label_)
         if ent.label_ == "TIME" or ent.text.lower() in ["today", "tomorrow", "tonight"]:
             time = ent.text
         elif ent.label_ == "EVENT":
